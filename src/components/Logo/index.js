@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-import logo from '../../assets/party-mouth.png';
+import logo from 'assets/logo.svg';
 
 const rotate360 = keyframes`
   from { transform: rotate(0deg); }
@@ -15,11 +15,6 @@ const Logo = styled.img`
 
 export default function(props) {
   return (
-    <Logo
-      id={props.id}
-      className={props.className}
-      src={logo}
-      alt="logo"
-    />
+    <Logo id={props.id} className={props.className} src={logo} alt="logo" />
   );
 }

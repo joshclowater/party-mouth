@@ -1,17 +1,17 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import LandingPage from '../LandingPage';
-import Host from '../Host';
-import Play from '../Play';
+import LandingPage from 'containers/LandingPage';
+import Host from 'containers/Host';
+import Play from 'containers/Play';
 
-export default function () {
+export default function() {
   return (
     <BrowserRouter>
       <Fragment>
-        <Route exact path="/" component={LandingPage}/>
-        <Route path="/host" component={Host}/>
-        <Route path="/play" component={Play}/>
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/host" component={Host} />
+        <Route path="/play" component={Play} />
       </Fragment>
     </BrowserRouter>
   );
