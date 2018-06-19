@@ -8,8 +8,8 @@
   },
   "license": "UNLICENCED",
   "engines": {
-    "node": ">= 8.0.0",
-    "npm": ">= 5.0.0"
+    "node": ">= 10.4.0",
+    "npm": ">= 6.1.0"
   },
   "dependencies": {
     "express": "^4.16.3",
@@ -24,8 +24,8 @@
     "react-scripts": "1.1.4",
     "redux": "^4.0.0",
     "redux-immutable": "^4.0.0",
+    "redux-saga": "^0.16.0",
     "redux-thunk": "^2.3.0",
-    "rxjs": "^6.2.0",
     "socket.io": "^2.1.0",
     "socket.io-client": "^2.1.0",
     "socketio-wildcard": "^2.0.0",

@@ -1,8 +1,8 @@
-var http = require('http');
-var socketIo = require('socket.io');
-var express = require('express');
-var serveStatic = require('serve-static');
-var game = require('./game');
+const http = require('http');
+const socketIo = require('socket.io');
+const express = require('express');
+const serveStatic = require('serve-static');
+const game = require('./socket');
 
 const app = express();
 if (process.argv.length === 2) {
@@ -10,12 +10,12 @@ if (process.argv.length === 2) {
   // Dev server will use webpack to hot reload and serve.
   app.use(serveStatic('./build'));
 }
-var httpServer = http.Server(app);
+const httpServer = http.Server(app);
 
-var io = socketIo(httpServer);
-game.initialiseGameSocketIo(io);
+const io = socketIo(httpServer);
+game(io);
 
-var port = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 httpServer.listen(port, () => {
   console.log('>> Express server listening on port:', port);
 });

@@ -5,11 +5,11 @@ import store from 'redux/store';
 
 let socket;
 
-export const initSocket = type => {
+export const initSocket = role => {
   if (socket === undefined) {
-    const options = { query: { type } };
+    const options = { query: { role, id: Math.random() } };
     if (process.env.NODE_ENV === 'development') {
-      // Replace "localhost" with IP address for multiple device development
+      // Replace "localhost" with IP address for local multi device development
       socket = io('http://localhost:5000', options);
     } else {
       socket = io(options);
@@ -19,7 +19,7 @@ export const initSocket = type => {
     socket.on('*', packet => {
       store.dispatch({
         type: packet.data[0],
-        data: packet.data[1]
+        ...packet.data[1]
       });
     });
   } else {
