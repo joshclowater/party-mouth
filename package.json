@@ -8,8 +8,8 @@
   },
   "license": "UNLICENCED",
   "engines": {
-    "node": ">= 10.4.0",
-    "npm": ">= 6.1.0"
+    "node": "10.5.0",
+    "npm": "6.1.0"
   },
   "dependencies": {
     "express": "^4.16.3",
@@ -23,6 +23,7 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "redux": "^4.0.0",
+    "redux-form": "^7.4.2",
     "redux-immutable": "^4.0.0",
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.3.0",
@@ -42,7 +43,6 @@
     "build": "react-scripts build; node server/index.js",
     "lint": "node_modules/eslint/bin/eslint.js src",
     "test": "react-scripts test --env=jsdom",
-    "precommit": "npm run lint && lint-staged",
-    "eject": "react-scripts eject"
+    "precommit": "npm run lint && lint-staged"
   }
 }

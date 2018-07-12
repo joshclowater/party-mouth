@@ -1,6 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from './sagas';
 import reducer from './reducers';
+
+const sagaMiddleware = createSagaMiddleware();
 
 // Redux Dev Tools
 /* eslint-disable no-underscore-dangle */
@@ -12,6 +16,10 @@ const composeEnhancers =
     : compose;
 /* eslint-enable */
 
-const enhancer = composeEnhancers(applyMiddleware(thunk));
+const enhancer = composeEnhancers(applyMiddleware(thunk, sagaMiddleware));
 
-export default createStore(reducer, enhancer);
+const store = createStore(reducer, enhancer);
+
+sagaMiddleware.run(rootSaga);
+
+export default store;

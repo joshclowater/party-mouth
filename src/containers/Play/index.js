@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import { initSocket } from 'socket';
+import { connect } from 'react-redux';
 
-export default class Play extends Component {
-  componentDidMount() {
-    initSocket('player');
-  }
+import Layout from './Layout';
 
-  render() {
-    return <div>TODO Play</div>;
-  }
+import { getStatus } from 'src/redux/Game/selectors';
+
+export function mapStateToProps(state) {
+  return {
+    status: getStatus(state)
+  };
 }
+
+export default connect(mapStateToProps)(Layout);

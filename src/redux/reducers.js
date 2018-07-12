@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux-immutable';
-import Game from './Game';
+import { reducer as form } from 'redux-form/immutable';
+import game from './Game';
 
 const reducer = combineReducers({
-  Game,
+  form,
+  game
 });
 
 export default reducer;

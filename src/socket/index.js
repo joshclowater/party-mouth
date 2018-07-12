@@ -1,7 +1,8 @@
 import io from 'socket.io-client';
 import wildcard from 'socketio-wildcard';
+import { startSubmit } from 'redux-form/immutable';
 
-import store from 'redux/store';
+import store from 'src/redux/store';
 
 let socket;
 
@@ -25,4 +26,9 @@ export const initSocket = role => {
   } else {
     throw new Error('Socket is already defined', socket);
   }
+};
+
+export const connectToGame = values => {
+  store.dispatch(startSubmit('playerConnectToGame'));
+  socket.emit('CONNECT_TO_GAME', values);
 };

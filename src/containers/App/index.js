@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import LandingPage from 'containers/LandingPage';
-import Host from 'containers/Host';
-import Play from 'containers/Play';
+import LandingPage from 'src/containers/LandingPage';
+import Host from 'src/containers/Host';
+import Play from 'src/containers/Play';
 
 export default function() {
   return (

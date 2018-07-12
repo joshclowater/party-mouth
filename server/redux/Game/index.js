@@ -8,6 +8,13 @@ module.exports.hostConnection = (gameId, id) => ({
   id
 })
 
+module.exports.playerConnection = (gameId, id, name) => ({
+  type: 'PLAYER_CONNECTION',
+  gameId,
+  id,
+  name
+})
+
 // Reducer
 
 module.exports.reducer = function reducer(state = new Map(), action) {
@@ -20,8 +27,20 @@ module.exports.reducer = function reducer(state = new Map(), action) {
           host: {
             id: action.id
           },
-          players: {}
+          players: []
         })
+      );
+    }
+    case 'PLAYER_CONNECTION': {
+      return state.updateIn(
+        [action.gameId, 'players'],
+        players =>
+          players.push(
+            new Map({
+              id: action.id,
+              name: action.name
+            })
+          )
       );
     }
     default: {
