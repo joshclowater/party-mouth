@@ -1,5 +1,7 @@
 const { put, select, takeEvery } = require('redux-saga/effects');
 const {
+  getOtherIds,
+  getPlayersGameId,
   hasGame,
   isGameWaitingForPlayers,
   isNameInGame,
@@ -7,6 +9,7 @@ const {
 } = require('./selectors');
 const {
   hostConnection,
+  deleteGame,
   playerConnection
 } = require('./');
 
@@ -28,9 +31,25 @@ function* onConnection({ role, id, socket }) {
     sockets[id] = socket;
     socket.emit('CONNECTED', { role, gameId });
   } else if (role === 'player') {
+    sockets[id] = socket;
     socket.emit('CONNECTED', { role });
   } else {
     console.error('invalid role', role);
+    socket.emit('INVALID_ROLE', { role });
+  }
+}
+
+function* onDisconnect({ id }) {
+  delete sockets[id];
+  const gameId = yield select(getPlayersGameId, id);
+  if (gameId !== undefined) {
+    const otherIds = yield select(getOtherIds, id);
+    yield put(deleteGame(gameId));
+    otherIds.forEach(otherId => {
+      sockets[otherId].emit('DISCONNECT', { message: 'Player was disconnected' })
+      sockets[otherId].disconnect();
+      delete sockets[otherId];
+    });
   }
 }
 
@@ -59,5 +78,6 @@ function* onConnectToGame({ id, socket, gameId, name }) {
 
 module.exports = [
   takeEvery('CONNECTION', onConnection),
+  takeEvery('DISCONNECT', onDisconnect),
   takeEvery('CONNECT_TO_GAME', onConnectToGame)
 ];

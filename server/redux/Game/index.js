@@ -8,6 +8,11 @@ module.exports.hostConnection = (gameId, id) => ({
   id
 })
 
+module.exports.deleteGame = gameId => ({
+  type: 'DELETE_GAME',
+  gameId
+})
+
 module.exports.playerConnection = (gameId, id, name) => ({
   type: 'PLAYER_CONNECTION',
   gameId,
@@ -23,6 +28,7 @@ module.exports.reducer = function reducer(state = new Map(), action) {
       return state.set(
         action.gameId,
         fromJS({
+          id: action.gameId,
           status: 'waiting-for-players',
           host: {
             id: action.id
@@ -30,6 +36,9 @@ module.exports.reducer = function reducer(state = new Map(), action) {
           players: []
         })
       );
+    }
+    case 'DELETE_GAME': {
+      return state.delete(action.gameId);
     }
     case 'PLAYER_CONNECTION': {
       return state.updateIn(

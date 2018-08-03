@@ -5,6 +5,7 @@ module.exports = function(io) {
   io.use(middleware);
   io.on('connection', function(socket) {
     const { role, id } = socket.handshake.query;
+    console.log('CONNECTION', role, id);
     store.dispatch({
       type: 'CONNECTION',
       role,
@@ -12,7 +13,7 @@ module.exports = function(io) {
       socket
     });
     socket.on('*', function(packet) {
-      console.log('* packet', packet.data[0], packet.data[1]);
+      console.log(packet.data[0], role, id, packet.data[1]);
       store.dispatch({
         type: packet.data[0],
         role,
@@ -22,10 +23,9 @@ module.exports = function(io) {
       });
     });
     socket.on('disconnect', function () {
-      console.log('TODO disconnect', role, id);
+      console.log('DISCONNECT', role, id);
       store.dispatch({
         type: 'DISCONNECT',
-        role,
         id
       });
     });
