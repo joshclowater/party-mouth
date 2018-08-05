@@ -16,6 +16,10 @@ Runs the linter on the code to see that it is valid and check for syntax mistake
 
 Launches the test runner in the interactive watch mode.
 
+### `npm test -- --coverage`
+
+Runs all of the tests and outputs a code coverage report.
+
 ### `npm run build`
 
-Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes. Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+Builds the app for production in the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes. Open [http://localhost:5000](http://localhost:5000) to view it in the browser.

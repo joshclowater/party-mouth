@@ -3,10 +3,9 @@ import { Field } from 'redux-form/immutable';
 import FieldWrapper from '../FieldWrapper';
 import Input from '../Input';
 
-const RenderField = ({
+export const RenderField = ({
   input,
   label,
-  type,
   id,
   meta: { touched, error, warning, submitting },
   ...rest

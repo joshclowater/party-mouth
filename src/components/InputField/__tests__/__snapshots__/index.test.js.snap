@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputField renders correctly 1`] = `
+<Field
+  component={[Function]}
+  name="mock name"
+/>
+`;
+
+exports[`RenderField renders correctly 1`] = `
+<FieldWrapper
+  error="mock error"
+  inputName="mockName"
+  label="mock label"
+  touched={true}
+  warning="mock warning"
+>
+  <styled.input
+    disabled={true}
+    hasError={true}
+    id="mock id"
+    mockInputField="mock input field value"
+    name="mockName"
+  />
+</FieldWrapper>
+`;

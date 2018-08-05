@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const pulse = keyframes`
@@ -9,7 +8,7 @@ const pulse = keyframes`
   }
 `;
 
-const Pulse = styled.div`
+export default styled.div`
   width: 10vh;
   height: 10vh;
   margin: 0 auto;
@@ -17,7 +16,3 @@ const Pulse = styled.div`
   border-radius: 100%;
   animation: ${pulse} 1s infinite ease-in-out;
 `;
-
-export default function(props) {
-  return <Pulse id={props.id} className={props.className} />;
-}

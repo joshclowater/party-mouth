@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly 1`] = `
+<styled.form>
+  <InputField
+    autoComplete="off"
+    label="Game id"
+    maxLength="5"
+    name="gameId"
+    placeholder="Enter a 5-letter game id"
+  />
+  <InputField
+    autoComplete="given-name"
+    label="Your name (max length 12)"
+    name="name"
+    placeholder="Enter your name"
+  />
+  <styled.button
+    disabled="mock submitting value"
+    id="joinGame"
+    type="submit"
+  >
+    Connecting...
+  </styled.button>
+</styled.form>
+`;

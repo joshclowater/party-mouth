@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly 1`] = `
+.c0 {
+  width: calc(100% - 4vh - 2px);
+  padding: 1.3vh 2vh;
+  font-size: 2vh;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid;
+  border-color: #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  -webkit-transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+  -webkit-transition-property: border-color,box-shadow;
+  transition-property: border-color,box-shadow;
+  -webkit-transition-duration: 0.15s,0.15s;
+  transition-duration: 0.15s,0.15s;
+  -webkit-transition-timing-function: ease-in-out,ease-in-out;
+  transition-timing-function: ease-in-out,ease-in-out;
+  -webkit-transition-delay: initial,initial;
+  transition-delay: initial,initial;
+}
+
+.c0:focus {
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(102,175,233,0.6);
+}
+
+<input
+  className="c0"
+/>
+`;

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly 1`] = `
+.c0 {
+  width: 10vh;
+  height: 10vh;
+  margin: 0 auto;
+  background-color: #333;
+  border-radius: 100%;
+  -webkit-animation: cpyDft 1s infinite ease-in-out;
+  animation: cpyDft 1s infinite ease-in-out;
+}
+
+<div
+  className="c0"
+/>
+`;

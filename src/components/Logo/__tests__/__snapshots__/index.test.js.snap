@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly 1`] = `
+.c0 {
+  -webkit-animation: iVXCSc infinite 20s linear;
+  animation: iVXCSc infinite 20s linear;
+  height: 12vh;
+}
+
+<img
+  alt="logo"
+  className="c0"
+  src="logo.svg"
+/>
+`;
