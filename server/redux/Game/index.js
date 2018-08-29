@@ -6,19 +6,23 @@ module.exports.hostConnection = (gameId, id) => ({
   type: 'HOST_CONNECTION',
   gameId,
   id
-})
+});
 
 module.exports.deleteGame = gameId => ({
   type: 'DELETE_GAME',
   gameId
-})
+});
 
 module.exports.playerConnection = (gameId, id, name) => ({
   type: 'PLAYER_CONNECTION',
   gameId,
   id,
   name
-})
+});
+
+module.exports.setGameInProgress = (gameId) => ({
+  type: 'SET_GAME_IN_PROGRESS'
+});
 
 // Reducer
 
@@ -51,6 +55,9 @@ module.exports.reducer = function reducer(state = new Map(), action) {
             })
           )
       );
+    }
+    case 'SET_GAME_IN_PROGRESS': {
+      return state.setIn([action.gameId, 'status'], 'game-in-progress');
     }
     default: {
       return state;

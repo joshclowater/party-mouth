@@ -4,7 +4,7 @@ import { initSocket } from 'src/socket';
 
 import HostWaitingForPlayersToConnect from 'src/containers/HostWaitingForPlayersToConnect';
 import CenteredComponent from 'src/components/Centered';
-import ConnectingToServer from 'src/components/ConnectingToServer';
+import LoadingMessage from 'src/components/LoadingMessage';
 
 const CenteredScreen = styled(CenteredComponent)`
   height: 100vh;
@@ -18,9 +18,13 @@ export default class Host extends Component {
   render() {
     let content;
     if (this.props.status === 'connecting-to-server') {
-      content = <ConnectingToServer />;
+      content = <LoadingMessage message="Connecting to server" />;
     } else if (this.props.status === 'waiting-for-players-to-connect') {
       content = <HostWaitingForPlayersToConnect />;
+    } else if (this.props.status === 'starting-game') {
+      content = <LoadingMessage message="Starting game" />;
+    } else if (this.props.status === 'game-started') {
+      content = 'TODO Game started';
     } else {
       throw new Error('invalid status', this.props.status);
     }

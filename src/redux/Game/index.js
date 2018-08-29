@@ -1,12 +1,15 @@
-import { fromJS } from 'immutable';
+import { fromJS, List } from 'immutable';
 
 // Actions
+
+export const startingGame = () => ({
+  type: 'STARTING_GAME'
+});
 
 // Initial state
 
 const initialState = fromJS({
-  status: 'connecting-to-server',
-  players: []
+  status: 'connecting-to-server'
 });
 
 // Reducer
@@ -18,7 +21,8 @@ export default function reducer(state = initialState, action) {
         return state
           .set('role', action.role)
           .set('gameId', action.gameId)
-          .set('status', 'waiting-for-players-to-connect');
+          .set('status', 'waiting-for-players-to-connect')
+          .set('players', new List());
       } else if (action.role === 'player') {
         return state.set('role', action.role).set('status', 'waiting-to-join');
       } else {
@@ -32,6 +36,12 @@ export default function reducer(state = initialState, action) {
       return state.update('players', players =>
         players.push(fromJS(action.player))
       );
+    }
+    case 'STARTING_GAME': {
+      return state.set('status', 'starting-game');
+    }
+    case 'GAME_STARTED': {
+      return state.set('status', 'game-started');
     }
     default: {
       return state;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { initSocket } from 'src/socket';
 
 import CenteredComponent from 'src/components/Centered';
-import ConnectingToServer from 'src/components/ConnectingToServer';
+import LoadingMessage from 'src/components/LoadingMessage';
 import PlayerConnectToGame from 'src/containers/PlayerConnectToGame';
 
 const CenteredScreen = styled(CenteredComponent)`
@@ -18,7 +18,7 @@ export default class Play extends Component {
   render() {
     let content;
     if (this.props.status === 'connecting-to-server') {
-      content = <ConnectingToServer />;
+      content = <LoadingMessage message="Connecting to server" />;
     } else if (this.props.status === 'waiting-to-join') {
       content = <PlayerConnectToGame />;
     } else if (this.props.status === 'waiting-for-game-start') {

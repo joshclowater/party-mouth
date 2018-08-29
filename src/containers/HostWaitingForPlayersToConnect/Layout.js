@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from 'src/components/Button';
+import { startGame } from 'src/socket';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -7,12 +9,16 @@ const Wrapper = styled.div`
 `;
 
 const GameInfo = styled.div`
-  height: 30vh;
+  height: 25vh;
 `;
 
 const GameId = styled.div`
   font-size: 8vh;
   margin-bottom: 3vh;
+`;
+
+const Players = styled.div`
+  margin-bottom: 4vh;
 `;
 
 const PlayersHeader = styled.div`
@@ -33,12 +39,17 @@ export default function(props) {
         <div>Enter the id on additional devices to connect</div>
       </GameInfo>
       {props.players.size > 0 && (
-        <div id="players">
+        <Players id="players">
           <PlayersHeader>Players</PlayersHeader>
           {props.players.map(player => (
             <Player key={player.get('name')}>{player.get('name')}</Player>
           ))}
-        </div>
+        </Players>
+      )}
+      {props.players.size >= 4 && (
+        <Button id="startGame" onClick={startGame}>
+          Start game
+        </Button>
       )}
     </Wrapper>
   );

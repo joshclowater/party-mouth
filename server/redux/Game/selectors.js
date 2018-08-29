@@ -46,6 +46,9 @@ module.exports.hasGame = (state, gameId) =>
 module.exports.isGameWaitingForPlayers = (state, gameId) =>
   state.getIn(['game', gameId, 'status']) === 'waiting-for-players'
 
+module.exports.isGameAtMaxPlayers = (state, gameId) =>
+  state.getIn(['game', gameId, 'players']).size === 8
+
 module.exports.isNameInGame = (state, gameId, name) =>
   state
     .getIn(['game', gameId, 'players'])

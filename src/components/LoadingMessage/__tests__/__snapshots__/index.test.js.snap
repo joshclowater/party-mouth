@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Renders correctly 1`] = `
-<React.Fragment>
+<Fragment>
   <styled.div />
-  Connecting to server
-</React.Fragment>
+  mock message
+</Fragment>
 `;

@@ -12,20 +12,20 @@
     "npm": "6.2.0"
   },
   "dependencies": {
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "enzyme-to-json": "^3.3.4",
     "express": "^4.16.3",
     "husky": "^0.14.3",
     "immutable": "^3.8.2",
-    "jest-styled-components": "^5.0.1",
-    "lint-staged": "^7.2.0",
-    "prettier": "^1.14.0",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
+    "jest-styled-components": "^6.2.0",
+    "lint-staged": "^7.2.2",
+    "prettier": "^1.14.2",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4",
+    "react-scripts": "1.1.5",
     "redux": "^4.0.0",
     "redux-form": "^7.4.2",
     "redux-immutable": "^4.0.0",
@@ -34,7 +34,7 @@
     "socket.io": "^2.1.1",
     "socket.io-client": "^2.1.1",
     "socketio-wildcard": "^2.0.0",
-    "styled-components": "^3.4.0"
+    "styled-components": "^3.4.8"
   },
   "jest": {
     "snapshotSerializers": [

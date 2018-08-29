@@ -4,13 +4,15 @@ const {
   getPlayersGameId,
   hasGame,
   isGameWaitingForPlayers,
+  isGameAtMaxPlayers,
   isNameInGame,
   getHostId
 } = require('./selectors');
 const {
   hostConnection,
   deleteGame,
-  playerConnection
+  playerConnection,
+  setGameInProgress
 } = require('./');
 
 const sockets = {};
@@ -61,7 +63,11 @@ function* onConnectToGame({ id, socket, gameId, name }) {
   }
   // Validate game has started
   if (!(yield select(isGameWaitingForPlayers, gameId))) {
-    socket.emit('CONNECT_TO_GAME_FAILED', { error: { gameId: 'A game with this id does not exist' }});
+    socket.emit('CONNECT_TO_GAME_FAILED', { error: { gameId: 'The game has already started' }});
+    return;
+  }
+  if ((yield select(isGameAtMaxPlayers, gameId))) {
+    socket.emit('CONNECT_TO_GAME_FAILED', { error: { gameId: 'The game is full' }});
     return;
   }
   // Validate name isn't already in game
@@ -76,8 +82,15 @@ function* onConnectToGame({ id, socket, gameId, name }) {
   sockets[host].emit('PLAYER_CONNECTED_TO_GAME', { player: { id, name }});
 }
 
+function* onStartGame({ socket, id }) {
+  const gameId = yield select(getPlayersGameId, id);
+  yield put(setGameInProgress(gameId));
+  socket.emit('GAME_STARTED');
+}
+
 module.exports = [
   takeEvery('CONNECTION', onConnection),
   takeEvery('DISCONNECT', onDisconnect),
-  takeEvery('CONNECT_TO_GAME', onConnectToGame)
+  takeEvery('CONNECT_TO_GAME', onConnectToGame),
+  takeEvery('START_GAME', onStartGame)
 ];

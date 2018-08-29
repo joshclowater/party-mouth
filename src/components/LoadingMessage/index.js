@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import Loading from 'src/components/Loading';
 
-export default function() {
+export default function(props) {
   return (
     <Fragment>
       <Loading />
-      Connecting to server
+      {props.message}
     </Fragment>
   );
 }
