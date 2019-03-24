@@ -1,14 +1,14 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 import 'jest-styled-components';
 import Button from '../';
 
 it('Renders correctly', () => {
-  expect(shallow(<Button />)).toMatchSnapshot();
+  expect(renderer.create(<Button />).toJSON()).toMatchSnapshot();
 });
 
 describe('disabled', () => {
   it('Renders correctly', () => {
-    expect(shallow(<Button disabled />)).toMatchSnapshot();
+    expect(renderer.create(<Button disabled />).toJSON()).toMatchSnapshot();
   });
 });

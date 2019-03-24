@@ -1,14 +1,14 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 import 'jest-styled-components';
 import Input from '../';
 
 it('Renders correctly', () => {
-  expect(shallow(<Input />)).toMatchSnapshot();
+  expect(renderer.create(<Input />).toJSON()).toMatchSnapshot();
 });
 
 describe('hasError', () => {
-  const wrapper = shallow(<Input hasError />);
+  const wrapper = renderer.create(<Input hasError />).toJSON();
   it('has red border', () => {
     expect(wrapper).toHaveStyleRule('border-color', 'red');
   });

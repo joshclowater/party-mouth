@@ -16,22 +16,12 @@ exports[`Renders correctly 1`] = `
   align-items: center;
 }
 
-<Component
-  className="mock class"
+<div
+  className="mock class c0"
   id="mock id"
 >
-  <styled.div
-    className="mock class"
-    id="mock id"
-  >
-    <div
-      className="mock class c0"
-      id="mock id"
-    >
-      <div>
-        "Children"
-      </div>
-    </div>
-  </styled.div>
-</Component>
+  <div>
+    "Children"
+  </div>
+</div>
 `;
