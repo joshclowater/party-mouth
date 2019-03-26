@@ -38,15 +38,15 @@ export default function(props) {
         <GameId id="gameId">{props.gameId}</GameId>
         <div>Enter the id on additional devices to connect</div>
       </GameInfo>
-      {props.players.size > 0 && (
+      {props.players.length > 0 && (
         <Players id="players">
           <PlayersHeader>Players</PlayersHeader>
           {props.players.map(player => (
-            <Player key={player.get('name')}>{player.get('name')}</Player>
+            <Player key={player.id}>{player.name}</Player>
           ))}
         </Players>
       )}
-      {props.players.size >= 4 && (
+      {props.players.length >= 4 && (
         <Button id="startGame" onClick={startGame}>
           Start game
         </Button>

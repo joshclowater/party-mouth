@@ -1,6 +1,6 @@
 {
   "name": "party-mouth",
-  "version": "0.1.0",
+  "version": "0.1.0-SNAPSHOT",
   "author": "Josh Clowater <josh.clowater@gmail.com>",
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
     "redux-form": "^8.1.0",
     "redux-immutable": "^4.0.0",
     "redux-saga": "^1.0.2",
-    "redux-thunk": "^2.3.0",
+    "redux-starter-kit": "^0.4.3",
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0",
     "socketio-wildcard": "^2.0.0",
@@ -45,23 +45,23 @@
     "lint": "node_modules/eslint/bin/eslint.js ./src",
     "test": "react-scripts test"
   },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint && lint-staged && npm run test -- --coverage"
     }
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
-  },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
       "prettier --single-quote --write",
       "git add"
+    ]
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
     ]
   },
   "browserslist": [

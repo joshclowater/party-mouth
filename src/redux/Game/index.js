@@ -1,50 +1,41 @@
-import { fromJS, List } from 'immutable';
+import { createAction, createReducer } from 'redux-starter-kit';
 
 // Actions
 
-export const startingGame = () => ({
-  type: 'STARTING_GAME'
-});
+export const startingGame = createAction('STARTING_GAME');
 
 // Initial state
 
-const initialState = fromJS({
+const initialState = {
   status: 'connecting-to-server'
-});
+};
 
 // Reducer
 
-export default function reducer(state = initialState, action) {
-  switch (action.type) {
-    case 'CONNECTED': {
-      if (action.role === 'host') {
-        return state
-          .set('role', action.role)
-          .set('gameId', action.gameId)
-          .set('status', 'waiting-for-players-to-connect')
-          .set('players', new List());
-      } else if (action.role === 'player') {
-        return state.set('role', action.role).set('status', 'waiting-to-join');
-      } else {
-        throw new Error('invalid role', action.role);
-      }
+export default createReducer(initialState, {
+  CONNECTED: (state, action) => {
+    if (action.role === 'host') {
+      state.role = action.role;
+      state.gameId = action.gameId;
+      state.status = 'waiting-for-players-to-connect';
+      state.players = [];
+    } else if (action.role === 'player') {
+      state.role = action.role;
+      state.status = 'waiting-to-join';
+    } else {
+      throw new Error('invalid role', action.role);
     }
-    case 'CONNECTED_TO_GAME': {
-      return state.set('status', 'waiting-for-game-start');
-    }
-    case 'PLAYER_CONNECTED_TO_GAME': {
-      return state.update('players', players =>
-        players.push(fromJS(action.player))
-      );
-    }
-    case 'STARTING_GAME': {
-      return state.set('status', 'starting-game');
-    }
-    case 'GAME_STARTED': {
-      return state.set('status', 'game-started');
-    }
-    default: {
-      return state;
-    }
+  },
+  CONNECTED_TO_GAME: state => {
+    state.status = 'waiting-for-game-start';
+  },
+  PLAYER_CONNECTED_TO_GAME: (state, action) => {
+    state.players.push(action.player);
+  },
+  STARTING_GAME: state => {
+    state.status = 'starting-game';
+  },
+  GAME_STARTED: state => {
+    state.status = 'game-started';
   }
-}
+});
